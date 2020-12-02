@@ -1,0 +1,2 @@
+rootProject.name = "Screen Data Android"
+include ':app'
