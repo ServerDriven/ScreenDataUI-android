@@ -6,10 +6,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
 import com.pv.screendata.views.SomeLabel
+import com.pv.screendataui.toComposeColor
 
 @Composable
 fun SDLabel(label: SomeLabel) {
@@ -20,13 +23,23 @@ fun SDLabel(label: SomeLabel) {
                 end = label.someStyle?.paddingEnd?.dp ?: 0.dp
             )
 
+    val textColor = label.someStyle?.foregroundColor?.toComposeColor() ?: Color.White
+
+
     Column(modifier = labelModifier) {
         Text(
             text = label.title,
-            fontSize = 16.sp
+            fontSize = 16.sp,
+            color = textColor,
+            textAlign = TextAlign.Center
         )
+
         label.subtitle?.let {
-            Text(text = it, fontSize = 12.sp)
+            Text(
+                text = it,
+                fontSize = 12.sp,
+                color = textColor
+            )
         }
     }
 }
@@ -47,3 +60,4 @@ object SDLabel {
         destination = null
     )
 }
+

@@ -14,6 +14,7 @@ import com.pv.screendata.extensions.toSomeView
 import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.objects.SomeColor as SomeColor
 import com.pv.screendata.screens.SomeScreen
+import com.pv.screendata.types.Alignment
 import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.views.SomeContainerView
 import com.pv.screendata.views.SomeSpacer
@@ -30,9 +31,15 @@ fun SDSCreen(screen: SomeScreen) {
             screen.backgroundColor.blue
         ),
         topBar = {
-            TopAppBar(title = {
-                Text(screen.title)
-            })
+            TopAppBar(
+                title = {
+                    Text(
+                        screen.title,
+                        color = Color.White
+                    )
+                },
+                backgroundColor = screen.toolbarColor.toComposeColor()
+            )
         },
     ) {
         SDSomeView(someView = screen.someView)
@@ -53,6 +60,12 @@ object SDScreenDemo {
             title = "YoloTitile",
             subtitle = null,
             backgroundColor = SomeColor(
+                102f / 255f,
+                187f / 255f,
+                106f / 255f,
+                .1f
+            ),
+            toolbarColor = SomeColor(
                 102f / 255f,
                 187f / 255f,
                 106f / 255f,
@@ -95,7 +108,8 @@ object SDScreenDemo {
                                 isHidden = false,
                                 cornerRadius = 4,
                                 paddingStart = 8,
-                                paddingEnd = 8
+                                paddingEnd = 8,
+                                alignment = Alignment.center
                             )
                         )
                         .toSomeView()

@@ -23,7 +23,7 @@ fun SDImage(image: SomeImage) {
             )
 
     Image(
-        asset = imageResource(id = R.drawable.mine_image_sample),
+        asset = imageResource(id = image.idRes ?: R.drawable.mine_image_sample),
         modifier = iModifier
     )
 }
@@ -40,6 +40,7 @@ object SDImage {
         id = "",
         url = "",
         someStyle = null,
-        destination = null
+        destination = null,
+        idRes = R.drawable.mine_image_sample
     )
 }
