@@ -1,6 +1,6 @@
 package com.pv.screendataui.viewsamples
 
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -10,18 +10,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.views.SomeLabel
 import com.pv.screendataui.toComposeColor
 
 @Composable
 fun SDLabel(label: SomeLabel) {
 
-    val labelModifier = Modifier.fillMaxWidth() +
-            Modifier.padding(
-                start = label.someStyle?.paddingStart?.dp ?: 0.dp,
-                end = label.someStyle?.paddingEnd?.dp ?: 0.dp
-            )
+    val labelModifier = Modifier.fillMaxWidth().then(
+        Modifier.padding(
+            start = label.someStyle?.paddingStart?.dp ?: 0.dp,
+            end = label.someStyle?.paddingEnd?.dp ?: 0.dp
+        )
+    )
 
     val textColor = label.someStyle?.foregroundColor?.toComposeColor() ?: Color.White
 

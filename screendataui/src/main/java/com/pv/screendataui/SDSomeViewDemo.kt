@@ -1,8 +1,8 @@
 package com.pv.screendataui
 
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.objects.SomeView
 import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.types.ViewType
