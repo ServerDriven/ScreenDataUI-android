@@ -1,3 +1,4 @@
 rootProject.name = "Screen Data Android"
 include ':app'
 include ':screendataui'
+include ':sdDestination'
