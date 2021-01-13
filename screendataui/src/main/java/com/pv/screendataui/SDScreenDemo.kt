@@ -110,6 +110,12 @@ object SDScreenDemo {
                         axis = ViewDirectionAxis.vertical
                     ).toSomeView(),
                     SomeSpacer(32).toSomeView(),
+                    SomeCustomView(
+                        id = "pogthisisacustomview",
+                        title = "psss",
+                        someViews = arrayOf(),
+                        axis = ViewDirectionAxis.vertical
+                    ).toSomeView(),
                     SDButton.mock
                         .copy(
                             someStyle = SomeStyle(
