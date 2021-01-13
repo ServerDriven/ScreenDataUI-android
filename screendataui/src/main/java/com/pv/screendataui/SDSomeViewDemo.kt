@@ -24,7 +24,9 @@ fun SDSomeView(someView: SomeView) = when (someView.type) {
         SDContainerView(containerView = someView.someContainer!!)
     }
     ViewType.custom -> {
-        Text(text = "Will link to a custom")
+        SomeStoreHolder.store?.customViews
+            ?.get(someView.someCustomView?.id)
+            ?.invoke(someView.someCustomView!!)
     }
     ViewType.text -> {
         Text(text = someView.someText!!.title)

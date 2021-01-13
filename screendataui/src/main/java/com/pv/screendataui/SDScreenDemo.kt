@@ -17,6 +17,7 @@ import com.pv.screendata.screens.SomeScreen
 import com.pv.screendata.types.Alignment
 import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.views.SomeContainerView
+import com.pv.screendata.views.SomeCustomView
 import com.pv.screendata.views.SomeSpacer
 import com.pv.screendataui.viewsamples.SDButton
 import com.pv.screendataui.viewsamples.SDImage
@@ -102,6 +103,12 @@ object SDScreenDemo {
                         .copy(someStyle = paddingStyle(8, 8))
                         .toSomeView(),
                     SomeSpacer(32).toSomeView(),
+                    SomeCustomView(
+                        id = "pogthisisacustomview",
+                        title = "psss",
+                        someViews = arrayOf(),
+                        axis = ViewDirectionAxis.vertical
+                    ).toSomeView(),
                     SDButton.mock
                         .copy(
                             someStyle = SomeStyle(
