@@ -17,6 +17,7 @@ import com.pv.screendata.screens.SomeScreen
 import com.pv.screendata.types.Alignment
 import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.views.SomeContainerView
+import com.pv.screendata.views.SomeCustomView
 import com.pv.screendata.views.SomeSpacer
 import com.pv.screendataui.viewsamples.SDButton
 import com.pv.screendataui.viewsamples.SDImage
@@ -101,6 +102,13 @@ object SDScreenDemo {
                     ).toSomeLabel()
                         .copy(someStyle = paddingStyle(8, 8))
                         .toSomeView(),
+                    SomeSpacer(8).toSomeView(),
+                    SomeCustomView(
+                        id = "pogthisisacustomview",
+                        title = "Can i pass the title even",
+                        someViews = arrayOf(),
+                        axis = ViewDirectionAxis.vertical
+                    ).toSomeView(),
                     SomeSpacer(32).toSomeView(),
                     SDButton.mock
                         .copy(
