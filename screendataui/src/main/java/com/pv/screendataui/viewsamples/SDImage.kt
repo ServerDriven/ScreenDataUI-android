@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.views.SomeImage
 import com.pv.screendataui.R
 
@@ -16,14 +16,15 @@ import com.pv.screendataui.R
 @Composable
 fun SDImage(image: SomeImage) {
 
-    val iModifier = Modifier.fillMaxWidth() +
-            Modifier.padding(
-                start = image.someStyle?.paddingStart?.dp ?: 0.dp,
-                end = image.someStyle?.paddingEnd?.dp ?: 0.dp
-            )
+    val iModifier = Modifier.fillMaxWidth().then(
+        Modifier.padding(
+            start = image.someStyle?.paddingStart?.dp ?: 0.dp,
+            end = image.someStyle?.paddingEnd?.dp ?: 0.dp
+        )
+    )
 
     Image(
-        asset = imageResource(id = R.drawable.mine_image_sample),
+        imageResource(id = image.idRes ?: R.drawable.mine_image_sample),
         modifier = iModifier
     )
 }
@@ -40,6 +41,7 @@ object SDImage {
         id = "",
         url = "",
         someStyle = null,
-        destination = null
+        destination = null,
+        idRes = R.drawable.mine_image_sample
     )
 }

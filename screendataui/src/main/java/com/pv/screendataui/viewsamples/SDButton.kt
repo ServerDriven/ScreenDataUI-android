@@ -1,35 +1,40 @@
 package com.pv.screendataui.viewsamples
 
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
+import com.pv.screendata.types.Alignment
 import com.pv.screendataui.toComposeColor
 import com.pv.screendata.views.SomeButton
 
 @Composable
 fun SDButton(someButton: SomeButton) {
 
-    val cbModifier = Modifier.fillMaxWidth() +
-            Modifier.padding(
-                start = someButton.someStyle?.paddingStart?.dp ?: 0.dp,
-                end = someButton.someStyle?.paddingEnd?.dp ?: 0.dp
-            )
+    val cbModifier = Modifier.fillMaxWidth().then(
+        Modifier.padding(
+            start = someButton.someStyle?.paddingStart?.dp ?: 0.dp,
+            end = someButton.someStyle?.paddingEnd?.dp ?: 0.dp
+        )
+    )
 
     TextButton(
         onClick = {},
         cbModifier,
         shape = RoundedCornerShape(someButton.someStyle?.cornerRadius?.dp ?: 2.dp),
-        backgroundColor = someButton.someStyle?.backgroundColor?.toComposeColor() ?: Color.White
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = someButton.someStyle?.backgroundColor?.toComposeColor() ?: Color.White
+        )
     ) {
         Text(
             text = someButton.title,
@@ -68,7 +73,8 @@ object SDButton {
                 1f
             ),
             isHidden = false,
-            cornerRadius = 4
+            cornerRadius = 4,
+            alignment = Alignment.center
         )
     )
 }

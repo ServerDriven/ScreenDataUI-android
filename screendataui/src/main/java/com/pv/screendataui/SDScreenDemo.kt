@@ -1,21 +1,23 @@
 package com.pv.screendataui
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.extensions.SomeStyleHelper.paddingStyle
 import com.pv.screendata.extensions.toSomeLabel
 import com.pv.screendata.extensions.toSomeView
 import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.objects.SomeColor as SomeColor
 import com.pv.screendata.screens.SomeScreen
+import com.pv.screendata.types.Alignment
 import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.views.SomeContainerView
+import com.pv.screendata.views.SomeCustomView
 import com.pv.screendata.views.SomeSpacer
 import com.pv.screendataui.viewsamples.SDButton
 import com.pv.screendataui.viewsamples.SDImage
@@ -30,9 +32,15 @@ fun SDSCreen(screen: SomeScreen) {
             screen.backgroundColor.blue
         ),
         topBar = {
-            TopAppBar(title = {
-                Text(screen.title)
-            })
+            TopAppBar(
+                title = {
+                    Text(
+                        screen.title,
+                        color = Color.White
+                    )
+                },
+                backgroundColor = screen.toolbarColor.toComposeColor()
+            )
         },
     ) {
         SDSomeView(someView = screen.someView)
@@ -53,6 +61,12 @@ object SDScreenDemo {
             title = "YoloTitile",
             subtitle = null,
             backgroundColor = SomeColor(
+                102f / 255f,
+                187f / 255f,
+                106f / 255f,
+                .1f
+            ),
+            toolbarColor = SomeColor(
                 102f / 255f,
                 187f / 255f,
                 106f / 255f,
@@ -88,14 +102,28 @@ object SDScreenDemo {
                     ).toSomeLabel()
                         .copy(someStyle = paddingStyle(8, 8))
                         .toSomeView(),
+                    SomeSpacer(8).toSomeView(),
+                    SomeCustomView(
+                        id = "pogthisisacustomview",
+                        title = "Can i pass the title even",
+                        someViews = arrayOf(),
+                        axis = ViewDirectionAxis.vertical
+                    ).toSomeView(),
                     SomeSpacer(32).toSomeView(),
+                    SomeCustomView(
+                        id = "pogthisisacustomview",
+                        title = "psss",
+                        someViews = arrayOf(),
+                        axis = ViewDirectionAxis.vertical
+                    ).toSomeView(),
                     SDButton.mock
                         .copy(
                             someStyle = SomeStyle(
                                 isHidden = false,
                                 cornerRadius = 4,
                                 paddingStart = 8,
-                                paddingEnd = 8
+                                paddingEnd = 8,
+                                alignment = Alignment.center
                             )
                         )
                         .toSomeView()

@@ -1,8 +1,8 @@
 package com.pv.screendataui
 
-import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.objects.SomeView
 import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.types.ViewType
@@ -24,7 +24,9 @@ fun SDSomeView(someView: SomeView) = when (someView.type) {
         SDContainerView(containerView = someView.someContainer!!)
     }
     ViewType.custom -> {
-        Text(text = "Will link to a custom")
+        SomeStoreHolder.store?.customViews
+            ?.get(someView.someCustomView?.id)
+            ?.invoke(someView.someCustomView!!)
     }
     ViewType.text -> {
         Text(text = someView.someText!!.title)

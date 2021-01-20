@@ -6,13 +6,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.views.SomeSpacer
 
 @Composable
 fun SDSpacer(someSpacer: SomeSpacer) {
     Box(
-        modifier = Modifier.fillMaxWidth() + Modifier.height(someSpacer.size.dp),
+        modifier = Modifier.fillMaxWidth().then(Modifier.height(someSpacer.size.dp)),
     )
 }
 
