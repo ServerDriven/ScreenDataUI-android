@@ -17,6 +17,7 @@ import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.types.Alignment
 import com.pv.screendataui.toComposeColor
 import com.pv.screendata.views.SomeButton
+import com.pv.sddestination.SDDestinationStore
 
 @Composable
 fun SDButton(someButton: SomeButton) {
@@ -29,7 +30,9 @@ fun SDButton(someButton: SomeButton) {
     )
 
     TextButton(
-        onClick = {},
+        onClick = {
+            SDDestinationStore.desinationHandler?.handeDestination(someButton.destination)
+        },
         cbModifier,
         shape = RoundedCornerShape(someButton.someStyle?.cornerRadius?.dp ?: 2.dp),
         colors = ButtonDefaults.buttonColors(
