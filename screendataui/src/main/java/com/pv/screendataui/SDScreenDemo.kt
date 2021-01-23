@@ -84,25 +84,25 @@ object SDScreenDemo {
         someView = SomeContainerView(
             id = null,
             axis = ViewDirectionAxis.vertical,
-            someViews = arrayOf(
+            someViews = listOf(
                 SDImage.mock.toSomeView(),
-                SomeSpacer(8).toSomeView(),
+                SomeSpacer(8, width = 0, shouldMaxWidth = true).toSomeView(),
                 "what".toSomeLabel()
                     .copy(someStyle = paddingStyle(8, 0))
                     .toSomeView(),
                 "yea".toSomeLabel()
                     .copy(someStyle = paddingStyle(8, 0))
                     .toSomeView(),
-                SomeSpacer(8).toSomeView(),
+                SomeSpacer(8, width = 0, shouldMaxWidth = true).toSomeView(),
                 Pair("Something", "Worse")
                     .toSomeLabel()
                     .copy(someStyle = paddingStyle(8, 0))
                     .toSomeView(),
-                SomeSpacer(8).toSomeView(),
+                SomeSpacer(8, width = 0, shouldMaxWidth = true).toSomeView(),
                 "what".toSomeLabel()
                     .copy(someStyle = paddingStyle(8, 0))
                     .toSomeView(),
-                SomeSpacer(8).toSomeView(),
+                SomeSpacer(8, width = 0, shouldMaxWidth = true).toSomeView(),
                 Pair(
                     "Something important", """
                         Is this an important piece of informtation or just another bunch of fake news if you read this far then you are a fool lul
@@ -110,19 +110,15 @@ object SDScreenDemo {
                 ).toSomeLabel()
                     .copy(someStyle = paddingStyle(8, 8))
                     .toSomeView(),
-                SomeSpacer(8).toSomeView(),
+                SomeSpacer(8, width = 0, shouldMaxWidth = true).toSomeView(),
                 SomeCustomView(
                     id = "pogthisisacustomview",
-                    title = "Can i pass the title even",
-                    someViews = arrayOf(),
-                    axis = ViewDirectionAxis.vertical
+                    title = "Can i pass the title even"
                 ).toSomeView(),
-                SomeSpacer(32).toSomeView(),
+                SomeSpacer(32, width = 0, shouldMaxWidth = true).toSomeView(),
                 SomeCustomView(
                     id = "pogthisisacustomview",
-                    title = "psss",
-                    someViews = arrayOf(),
-                    axis = ViewDirectionAxis.vertical
+                    title = "psss"
                 ).toSomeView(),
                 SDButton.mock
                     .copy(
@@ -146,7 +142,7 @@ object SDScreenDemo {
         backgroundColor = "#d32f2f".hexToSomeColor(),
         someView = SomeContainerView(
             axis = ViewDirectionAxis.vertical,
-            someViews = arrayOf(
+            someViews = listOf(
                 SomeLabel(
                     title = "Error loading screen",
                     subtitle = "Could not find lol"
@@ -161,7 +157,7 @@ object SDScreenDemo {
         backgroundColor = "#afb42b".hexToSomeColor(),
         someView = SomeContainerView(
             axis = ViewDirectionAxis.vertical,
-            someViews = arrayOf(
+            someViews = listOf(
                 SomeLabel(
                     title = "Currently loading"
                 ).toSomeView()

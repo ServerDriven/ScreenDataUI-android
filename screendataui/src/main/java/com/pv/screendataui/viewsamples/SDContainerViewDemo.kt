@@ -57,7 +57,7 @@ object SDContainerViewDemo {
         SomeContainerView(
             id = "someContainerId",
             axis = axis,
-            someViews = arrayOf(
+            someViews = listOf(
                 SDLabel.mock.toSomeView(),
                 SDLabel.mock.toSomeView(),
                 SDLabel.mock.toSomeView()
