@@ -20,18 +20,20 @@ import com.pv.screendataui.toSafeComposeColor
 @Composable
 fun SDText(someText: SomeText) {
 
+    val padding = someText.style?.padding?.dp ?: 0.dp
+
     val textModifier = Modifier.fillMaxWidth().then(
         Modifier.padding(
-            start = someText.style.paddingStart.dp,
-            end = someText.style.paddingEnd.dp
+            start = padding,
+            end = padding
         )
     )
 
     Text(
         text = someText.title,
         modifier = textModifier,
-        fontSize = someText.fontSize.sp,
-        color = someText.style.foregroundColor.toSafeComposeColor()
+        fontSize = 14.sp,
+        color = someText.style?.foregroundColor.toSafeComposeColor()
     )
 }
 
@@ -43,13 +45,11 @@ fun sdTextPreview() {
         someText = SomeText(
             id = "id",
             title = "Trying this out tho",
-            fontSize = 14,
             style = SomeStyle(
                 backgroundColor = "#000000".hexToSomeColor(),
                 foregroundColor = "#0080ff".hexToSomeColor(),
                 cornerRadius = 0,
-                paddingStart = 8,
-                paddingEnd = 8,
+                padding = 8,
                 alignment = Alignment.center
             )
         )

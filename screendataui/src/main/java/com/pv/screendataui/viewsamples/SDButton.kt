@@ -24,8 +24,8 @@ fun SDButton(someButton: SomeButton) {
 
     val cbModifier = Modifier.fillMaxWidth().then(
         Modifier.padding(
-            start = someButton.someStyle.paddingStart.dp,
-            end = someButton.someStyle.paddingEnd.dp
+            start = someButton.style?.padding?.dp ?: 0.dp,
+            end = someButton.style?.padding?.dp ?: 0.dp
         )
     )
 
@@ -34,15 +34,15 @@ fun SDButton(someButton: SomeButton) {
             SDDestinationStore.desinationHandler?.handeDestination(someButton.destination)
         },
         cbModifier,
-        shape = RoundedCornerShape(someButton.someStyle.cornerRadius.dp ?: 2.dp),
+        shape = RoundedCornerShape(someButton.style?.cornerRadius?.dp ?: 2.dp),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = someButton.someStyle.backgroundColor?.toComposeColor() ?: Color.White
+            backgroundColor = someButton.style?.backgroundColor?.toComposeColor() ?: Color.White
         )
     ) {
         Text(
             text = someButton.title,
             textAlign = TextAlign.Center,
-            color = someButton.someStyle.foregroundColor?.toComposeColor() ?: Color.Black
+            color = someButton.style?.foregroundColor?.toComposeColor() ?: Color.Black
         )
     }
 
@@ -59,10 +59,10 @@ object SDButton {
 
     val mock = SomeButton(
         id = null,
-        actionId = null,
+        actionID = null,
         title = "clieck meh mmooo",
         destination = null,
-        someStyle = SomeStyle(
+        style = SomeStyle(
             backgroundColor = SomeColor(
                 1f,
                 152f / 255f,

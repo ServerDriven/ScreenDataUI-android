@@ -5,13 +5,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
+import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.views.SomeSpacer
 import com.pv.screendataui.SDScreenDemo.hexToSomeColor
 
 @Composable
 fun SDSpacer(someSpacer: SomeSpacer) {
     Box(
-        modifier = Modifier.size(someSpacer.width.dp, someSpacer.height.dp)
+        modifier = Modifier.size(someSpacer.size.dp, someSpacer.size.dp)
     )
 }
 
@@ -23,7 +24,7 @@ fun sdSpacerPreview() {
 
 object SDSpacer {
     val mock = SomeSpacer(
-        height = 24,
-        width = 24
+        size = 24,
+        axis = ViewDirectionAxis.vertical
     )
 }
