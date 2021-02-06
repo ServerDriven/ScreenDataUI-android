@@ -2,8 +2,8 @@ package com.pv.screendataui.viewsamples
 
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.ScrollableRow
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -31,16 +31,28 @@ fun SDContainerView(containerView: SomeContainerView) {
         )
     )
 
+    val scrollable = containerView.isScrollable
+
     when (containerView.axis) {
-        ViewDirectionAxis.horizontal -> ScrollableRow(
-            modifier = cvModifier,
-        ) {
-            content()
-        }
-        ViewDirectionAxis.vertical -> ScrollableColumn(
-            modifier = cvModifier,
-        ) {
-            content()
+        ViewDirectionAxis.horizontal ->
+            if (scrollable) ScrollableRow(
+                modifier = cvModifier,
+            ) {
+                content()
+            } else {
+                Row(modifier = cvModifier) {
+                    content()
+                }
+            }
+        ViewDirectionAxis.vertical -> if (scrollable)
+            ScrollableColumn(
+                modifier = cvModifier,
+            ) {
+                content()
+            } else {
+            Column(modifier = cvModifier) {
+                content()
+            }
         }
     }
 }
