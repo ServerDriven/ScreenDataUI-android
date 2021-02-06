@@ -35,12 +35,3 @@ class DefaultSDDestinationHandler(
         }
     }
 }
-
-interface SDUrlNavigator {
-
-}
-
-interface SDScreenNavigator {
-
-    fun fetchScreen(id: String): Flow<SomeScreen>
-}

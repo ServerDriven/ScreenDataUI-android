@@ -15,8 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.types.Alignment
-import com.pv.screendataui.toComposeColor
 import com.pv.screendata.views.SomeButton
+import com.pv.screendataui.toSafeComposeColor
 import com.pv.sddestination.SDDestinationStore
 
 @Composable
@@ -24,8 +24,8 @@ fun SDButton(someButton: SomeButton) {
 
     val cbModifier = Modifier.fillMaxWidth().then(
         Modifier.padding(
-            start = someButton.someStyle?.paddingStart?.dp ?: 0.dp,
-            end = someButton.someStyle?.paddingEnd?.dp ?: 0.dp
+            start = someButton.style?.padding?.dp ?: 0.dp,
+            end = someButton.style?.padding?.dp ?: 0.dp
         )
     )
 
@@ -34,15 +34,16 @@ fun SDButton(someButton: SomeButton) {
             SDDestinationStore.desinationHandler?.handeDestination(someButton.destination)
         },
         cbModifier,
-        shape = RoundedCornerShape(someButton.someStyle?.cornerRadius?.dp ?: 2.dp),
+        shape = RoundedCornerShape(someButton.style?.cornerRadius?.dp ?: 2.dp),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = someButton.someStyle?.backgroundColor?.toComposeColor() ?: Color.White
+            backgroundColor = someButton.style?.backgroundColor?.toSafeComposeColor()
+                ?: Color.Unspecified
         )
     ) {
         Text(
             text = someButton.title,
             textAlign = TextAlign.Center,
-            color = someButton.someStyle?.foregroundColor?.toComposeColor() ?: Color.Black
+            color = someButton.style?.foregroundColor?.toSafeComposeColor() ?: Color.Magenta
         )
     }
 
@@ -59,14 +60,14 @@ object SDButton {
 
     val mock = SomeButton(
         id = null,
-        actionId = null,
+        actionID = null,
         title = "clieck meh mmooo",
         destination = null,
-        someStyle = SomeStyle(
+        style = SomeStyle(
             backgroundColor = SomeColor(
-                1f,
-                152f / 255f,
-                0f,
+                0.314f,
+                0.314f,
+                0.314f,
                 1f
             ),
             foregroundColor = SomeColor(

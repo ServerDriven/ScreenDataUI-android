@@ -15,6 +15,7 @@ import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.screens.SomeScreen
 import com.pv.screendata.types.Alignment
+import com.pv.screendata.types.FontType
 import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.views.SomeContainerView
 import com.pv.screendata.views.SomeCustomView
@@ -31,11 +32,7 @@ fun SDSCreen(screen: SomeScreen) {
 
     Scaffold(
         Modifier.fillMaxSize(),
-        backgroundColor = Color(
-            screen.backgroundColor.red,
-            screen.backgroundColor.green,
-            screen.backgroundColor.blue
-        ),
+        backgroundColor = screen.backgroundColor.toSafeComposeColor(),
         topBar = {
             TopAppBar(
                 title = {
@@ -44,7 +41,7 @@ fun SDSCreen(screen: SomeScreen) {
                         color = Color.White
                     )
                 },
-                backgroundColor = screen.toolbarColor.toComposeColor()
+                backgroundColor = Color.Black
             )
         },
     ) {
@@ -67,7 +64,6 @@ object SDScreenDemo {
     val mockScreen = SomeScreen(
         id = "yoloId",
         title = "YoloTitile",
-        subtitle = null,
         backgroundColor = SomeColor(
             102f / 255f,
             187f / 255f,
@@ -84,59 +80,54 @@ object SDScreenDemo {
         someView = SomeContainerView(
             id = null,
             axis = ViewDirectionAxis.vertical,
-            someViews = arrayOf(
+            views = listOf(
                 SDImage.mock.toSomeView(),
-                SomeSpacer(8).toSomeView(),
+                SomeSpacer(size = 8, axis = ViewDirectionAxis.vertical).toSomeView(),
                 "what".toSomeLabel()
-                    .copy(someStyle = paddingStyle(8, 0))
+                    .copy(style = paddingStyle(8))
                     .toSomeView(),
                 "yea".toSomeLabel()
-                    .copy(someStyle = paddingStyle(8, 0))
+                    .copy(style = paddingStyle(8))
                     .toSomeView(),
-                SomeSpacer(8).toSomeView(),
+                SomeSpacer(size = 8, axis = ViewDirectionAxis.vertical).toSomeView(),
                 Pair("Something", "Worse")
                     .toSomeLabel()
-                    .copy(someStyle = paddingStyle(8, 0))
+                    .copy(style = paddingStyle(8))
                     .toSomeView(),
-                SomeSpacer(8).toSomeView(),
+                SomeSpacer(size = 8, axis = ViewDirectionAxis.vertical).toSomeView(),
                 "what".toSomeLabel()
-                    .copy(someStyle = paddingStyle(8, 0))
+                    .copy(style = paddingStyle(8))
                     .toSomeView(),
-                SomeSpacer(8).toSomeView(),
+                SomeSpacer(size = 8, axis = ViewDirectionAxis.vertical).toSomeView(),
                 Pair(
                     "Something important", """
                         Is this an important piece of informtation or just another bunch of fake news if you read this far then you are a fool lul
                     """.trimIndent()
                 ).toSomeLabel()
-                    .copy(someStyle = paddingStyle(8, 8))
+                    .copy(style = paddingStyle(8))
                     .toSomeView(),
-                SomeSpacer(8).toSomeView(),
+                SomeSpacer(size = 8, axis = ViewDirectionAxis.vertical).toSomeView(),
                 SomeCustomView(
                     id = "pogthisisacustomview",
-                    title = "Can i pass the title even",
-                    someViews = arrayOf(),
-                    axis = ViewDirectionAxis.vertical
+                    title = "Can i pass the title even"
                 ).toSomeView(),
-                SomeSpacer(32).toSomeView(),
+                SomeSpacer(size = 32, axis = ViewDirectionAxis.vertical).toSomeView(),
                 SomeCustomView(
                     id = "pogthisisacustomview",
-                    title = "psss",
-                    someViews = arrayOf(),
-                    axis = ViewDirectionAxis.vertical
+                    title = "psss"
                 ).toSomeView(),
                 SDButton.mock
                     .copy(
-                        someStyle = SomeStyle(
+                        style = SomeStyle(
                             isHidden = false,
                             cornerRadius = 4,
-                            paddingStart = 8,
-                            paddingEnd = 8,
+                            padding = 8,
                             alignment = Alignment.center
                         )
                     )
                     .toSomeView()
             ),
-            someStyle = null
+            style = null
         ).toSomeView(),
         footerView = null
     )
@@ -146,10 +137,11 @@ object SDScreenDemo {
         backgroundColor = "#d32f2f".hexToSomeColor(),
         someView = SomeContainerView(
             axis = ViewDirectionAxis.vertical,
-            someViews = arrayOf(
+            views = listOf(
                 SomeLabel(
                     title = "Error loading screen",
-                    subtitle = "Could not find lol"
+                    subtitle = "Could not find lol",
+                    font = FontType.body
                 ).toSomeView()
             )
         ).toSomeView()
@@ -161,9 +153,10 @@ object SDScreenDemo {
         backgroundColor = "#afb42b".hexToSomeColor(),
         someView = SomeContainerView(
             axis = ViewDirectionAxis.vertical,
-            someViews = arrayOf(
+            views = listOf(
                 SomeLabel(
-                    title = "Currently loading"
+                    title = "Currently loading",
+                    font = FontType.body
                 ).toSomeView()
             )
         ).toSomeView()
@@ -181,3 +174,5 @@ object SDScreenDemo {
         )
     }
 }
+
+private fun Float.toColor() = this / 255f

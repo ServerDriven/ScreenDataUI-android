@@ -29,7 +29,7 @@ fun SDSomeView(someView: SomeView) = when (someView.type) {
             ?.invoke(someView.someCustomView!!)
     }
     ViewType.text -> {
-        Text(text = someView.someText!!.title)
+        SDText(someText = someView.someText!!)
     }
     ViewType.button -> {
         SDButton(someButton = someView.someButton!!)

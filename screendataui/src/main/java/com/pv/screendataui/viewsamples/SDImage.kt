@@ -18,8 +18,8 @@ fun SDImage(image: SomeImage) {
 
     val iModifier = Modifier.fillMaxWidth().then(
         Modifier.padding(
-            start = image.someStyle?.paddingStart?.dp ?: 0.dp,
-            end = image.someStyle?.paddingEnd?.dp ?: 0.dp
+            start = image.style?.padding?.dp ?: 0.dp,
+            end = image.style?.padding?.dp ?: 0.dp
         )
     )
 
@@ -40,7 +40,7 @@ object SDImage {
     val mock = SomeImage(
         id = "",
         url = "",
-        someStyle = null,
+        style = null,
         destination = null,
         idRes = R.drawable.mine_image_sample
     )
