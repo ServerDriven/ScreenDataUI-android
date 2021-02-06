@@ -32,11 +32,7 @@ fun SDSCreen(screen: SomeScreen) {
 
     Scaffold(
         Modifier.fillMaxSize(),
-        backgroundColor = Color(
-            screen.backgroundColor.red,
-            screen.backgroundColor.green,
-            screen.backgroundColor.blue
-        ),
+        backgroundColor = screen.backgroundColor.toSafeComposeColor(),
         topBar = {
             TopAppBar(
                 title = {
@@ -45,7 +41,7 @@ fun SDSCreen(screen: SomeScreen) {
                         color = Color.White
                     )
                 },
-                backgroundColor = screen.toolbarColor.toComposeColor()
+                backgroundColor = Color.Black
             )
         },
     ) {
@@ -178,3 +174,5 @@ object SDScreenDemo {
         )
     }
 }
+
+private fun Float.toColor() = this / 255f

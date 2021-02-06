@@ -33,7 +33,7 @@ fun SDText(someText: SomeText) {
         text = someText.title,
         modifier = textModifier,
         fontSize = 14.sp,
-        color = someText.style?.foregroundColor.toSafeComposeColor()
+        color = someText.style?.foregroundColor?.toComposeColor() ?: Color.Unspecified
     )
 }
 
@@ -44,10 +44,14 @@ fun sdTextPreview() {
     SDText(
         someText = SomeText(
             id = "id",
-            title = "Trying this out tho",
+            title = "28210 West Park Highway, Ashland, NE 68003\n\nJust off I-80 between Lincoln and Omaha at Exit 426",
             style = SomeStyle(
-                backgroundColor = "#000000".hexToSomeColor(),
-                foregroundColor = "#0080ff".hexToSomeColor(),
+                backgroundColor = SomeColor(
+                    1f, 1f, 1f, 1f
+                ),
+                foregroundColor = SomeColor(
+                    1f, 0.47843137f, 1f, 1f
+                ),
                 cornerRadius = 0,
                 padding = 8,
                 alignment = Alignment.center

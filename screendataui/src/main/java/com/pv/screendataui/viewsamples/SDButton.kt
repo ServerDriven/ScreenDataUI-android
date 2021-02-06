@@ -15,8 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.types.Alignment
-import com.pv.screendataui.toComposeColor
 import com.pv.screendata.views.SomeButton
+import com.pv.screendataui.toSafeComposeColor
 import com.pv.sddestination.SDDestinationStore
 
 @Composable
@@ -36,13 +36,14 @@ fun SDButton(someButton: SomeButton) {
         cbModifier,
         shape = RoundedCornerShape(someButton.style?.cornerRadius?.dp ?: 2.dp),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = someButton.style?.backgroundColor?.toComposeColor() ?: Color.White
+            backgroundColor = someButton.style?.backgroundColor?.toSafeComposeColor()
+                ?: Color.Unspecified
         )
     ) {
         Text(
             text = someButton.title,
             textAlign = TextAlign.Center,
-            color = someButton.style?.foregroundColor?.toComposeColor() ?: Color.Black
+            color = someButton.style?.foregroundColor?.toSafeComposeColor() ?: Color.Magenta
         )
     }
 
@@ -64,9 +65,9 @@ object SDButton {
         destination = null,
         style = SomeStyle(
             backgroundColor = SomeColor(
-                1f,
-                152f / 255f,
-                0f,
+                0.314f,
+                0.314f,
+                0.314f,
                 1f
             ),
             foregroundColor = SomeColor(
