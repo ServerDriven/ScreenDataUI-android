@@ -1,4 +1,4 @@
-package com.pv.screendataui.viewsamples
+package com.pv.screendataui.views
 
 import androidx.compose.material.Text
 import androidx.compose.foundation.layout.Column
@@ -64,11 +64,11 @@ fun SDLabel(label: SomeLabel) {
 
 @Preview
 @Composable
-fun sdLabelPreview() {
-    SDLabel(label = SDLabel.mock)
+internal fun SDLabelPreview() {
+    SDLabel(label = SDLabelMock.mock)
 }
 
-object SDLabel {
+internal object SDLabelMock {
 
     val mock = SomeLabel(
         id = "sdLabelId",

@@ -1,4 +1,4 @@
-package com.pv.screendataui.viewsamples
+package com.pv.screendataui.views
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
