@@ -21,8 +21,9 @@ import com.pv.screendata.views.SomeContainerView
 import com.pv.screendata.views.SomeCustomView
 import com.pv.screendata.views.SomeLabel
 import com.pv.screendata.views.SomeSpacer
-import com.pv.screendataui.viewsamples.SDButton
-import com.pv.screendataui.viewsamples.SDImage
+import com.pv.screendataui.views.SDButtonMock
+import com.pv.screendataui.views.SDImageMock
+import com.pv.screendataui.views.SDSomeView
 
 // would this function only take an id paraeter?
 @Composable
@@ -51,11 +52,11 @@ fun SDSCreen(screen: SomeScreen) {
 
 @Preview(showBackground = true)
 @Composable
-fun sdScreenPreview() {
+fun SDScreenPreview() {
     SDScreenDemo.mock()
 }
 
-object SDScreenDemo {
+internal object SDScreenDemo {
     @Composable
     fun mock() = SDSCreen(
         screen = mockScreen
@@ -81,7 +82,7 @@ object SDScreenDemo {
             id = null,
             axis = ViewDirectionAxis.vertical,
             views = listOf(
-                SDImage.mock.toSomeView(),
+                SDImageMock.mock.toSomeView(),
                 SomeSpacer(size = 8, axis = ViewDirectionAxis.vertical).toSomeView(),
                 "what".toSomeLabel()
                     .copy(style = paddingStyle(8))
@@ -116,7 +117,7 @@ object SDScreenDemo {
                     id = "pogthisisacustomview",
                     title = "psss"
                 ).toSomeView(),
-                SDButton.mock
+                SDButtonMock.mock
                     .copy(
                         style = SomeStyle(
                             isHidden = false,

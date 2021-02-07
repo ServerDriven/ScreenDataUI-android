@@ -1,4 +1,4 @@
-package com.pv.screendataui.viewsamples
+package com.pv.screendataui.views
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,9 +13,7 @@ import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.types.Alignment
 import com.pv.screendata.views.SomeText
-import com.pv.screendataui.SDScreenDemo.hexToSomeColor
 import com.pv.screendataui.toComposeColor
-import com.pv.screendataui.toSafeComposeColor
 
 @Composable
 fun SDText(someText: SomeText) {
@@ -39,7 +37,7 @@ fun SDText(someText: SomeText) {
 
 @Preview(showBackground = true)
 @Composable
-fun sdTextPreview() {
+internal fun SDTextPreview() {
 
     SDText(
         someText = SomeText(
@@ -50,7 +48,7 @@ fun sdTextPreview() {
                     1f, 1f, 1f, 1f
                 ),
                 foregroundColor = SomeColor(
-                    1f, 0.47843137f, 1f, 1f
+                    0.4f, 0f, 1f, 1f
                 ),
                 cornerRadius = 0,
                 padding = 8,

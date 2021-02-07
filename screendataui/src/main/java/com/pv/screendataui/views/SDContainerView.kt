@@ -1,14 +1,12 @@
-package com.pv.screendataui.viewsamples
+package com.pv.screendataui.views
 
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.ScrollableRow
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
-import com.pv.screendataui.SDSomeView
 import com.pv.screendata.extensions.SomeStyleHelper.paddingStyle
 import com.pv.screendata.extensions.toSomeView
 import com.pv.screendata.types.ViewDirectionAxis
@@ -59,22 +57,22 @@ fun SDContainerView(containerView: SomeContainerView) {
 
 @Preview(showBackground = true)
 @Composable
-fun sdContainerViewPreview() {
+internal fun SDContainerViewPreview() {
     SDContainerView(
         containerView = SDContainerViewDemo.containerMock(ViewDirectionAxis.vertical)
     )
 }
 
-object SDContainerViewDemo {
+internal object SDContainerViewDemo {
 
     val containerMock = { axis: ViewDirectionAxis ->
         SomeContainerView(
             id = "someContainerId",
             axis = axis,
             views = listOf(
-                SDLabel.mock.toSomeView(),
-                SDLabel.mock.toSomeView(),
-                SDLabel.mock.toSomeView()
+                SDLabelMock.mock.toSomeView(),
+                SDLabelMock.mock.toSomeView(),
+                SDLabelMock.mock.toSomeView()
             ),
             style = paddingStyle(4)
         )

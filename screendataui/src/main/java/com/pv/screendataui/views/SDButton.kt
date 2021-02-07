@@ -1,4 +1,4 @@
-package com.pv.screendataui.viewsamples
+package com.pv.screendataui.views
 
 import androidx.compose.material.Text
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -52,11 +52,11 @@ fun SDButton(someButton: SomeButton) {
 
 @Preview
 @Composable
-fun sdButtonPreview() {
-    SDButton(someButton = SDButton.mock)
+internal fun SDButtonPreview() {
+    SDButton(someButton = SDButtonMock.mock)
 }
 
-object SDButton {
+internal object SDButtonMock {
 
     val mock = SomeButton(
         id = null,

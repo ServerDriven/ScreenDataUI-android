@@ -1,12 +1,12 @@
-package com.pv.screendataui
+package com.pv.screendataui.views
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.objects.SomeView
 import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.types.ViewType
-import com.pv.screendataui.viewsamples.*
+import com.pv.screendataui.SomeStoreHolder
+import com.pv.screendataui.views.*
 
 // Todo : find safe fallback on those labels
 @Composable
@@ -41,11 +41,11 @@ fun SDSomeView(someView: SomeView) = when (someView.type) {
 
 @Preview(showBackground = true)
 @Composable
-fun sdSomeViewPreview() {
+internal fun SDSomeViewPreview() {
     SDSomeView(someView = SDSomeViewDemo.mock)
 }
 
-object SDSomeViewDemo {
+internal object SDSomeViewDemo {
 
     val mock = SomeView(
         type = ViewType.container,

@@ -1,4 +1,4 @@
-package com.pv.screendataandroid
+package com.pv.screendataui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.onStart
 
 @Composable
 @Preview
-fun previewSDFutureScreen() {
+internal fun previewSDFutureScreen() {
     SDFutureScreen(id = "")
 }
 

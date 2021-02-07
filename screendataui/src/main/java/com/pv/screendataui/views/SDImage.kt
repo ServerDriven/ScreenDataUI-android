@@ -1,4 +1,4 @@
-package com.pv.screendataui.viewsamples
+package com.pv.screendataui.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,11 +31,11 @@ fun SDImage(image: SomeImage) {
 
 @Preview
 @Composable
-fun sdImagePreview() {
-    SDImage(image = SDImage.mock)
+internal fun SDImagePreview() {
+    SDImage(image = SDImageMock.mock)
 }
 
-object SDImage {
+internal object SDImageMock {
 
     val mock = SomeImage(
         id = "",
