@@ -21,6 +21,7 @@ import com.pv.screendata.views.SomeContainerView
 import com.pv.screendata.views.SomeCustomView
 import com.pv.screendata.views.SomeLabel
 import com.pv.screendata.views.SomeSpacer
+import com.pv.screendataui.store.SomeToolbarStore
 import com.pv.screendataui.views.SDButtonMock
 import com.pv.screendataui.views.SDImageMock
 import com.pv.screendataui.views.SDSomeView
@@ -42,7 +43,10 @@ fun SDSCreen(screen: SomeScreen) {
                         color = Color.White
                     )
                 },
-                backgroundColor = Color.Black
+                backgroundColor = Color.Black,
+                actions = {
+                    SomeToolbarStore.toolbarComposable?.invoke()
+                }
             )
         },
     ) {
