@@ -45,7 +45,8 @@ fun SDSCreen(screen: SomeScreen) {
                 },
                 backgroundColor = Color.Black,
                 actions = {
-                    SomeToolbarStore.toolbarComposable?.invoke()
+                    if (SomeToolbarStore.toolbarCheck?.invoke() == true)
+                        SomeToolbarStore.toolbarComposable?.invoke()
                 }
             )
         },
