@@ -36,19 +36,20 @@ fun SDSCreen(screen: SomeScreen) {
         Modifier.fillMaxSize(),
         backgroundColor = screen.backgroundColor.toSafeComposeColor(),
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        screen.title,
-                        color = Color.White
-                    )
-                },
-                backgroundColor = Color.Black,
-                actions = {
-                    if (SomeToolbarStore.toolbarCheck?.invoke() == true)
+            if (SomeToolbarStore.toolbarCheck?.invoke(screen) == true) {
+                TopAppBar(
+                    title = {
+                        Text(
+                            screen.title,
+                            color = Color.White
+                        )
+                    },
+                    backgroundColor = Color.Black,
+                    actions = {
                         SomeToolbarStore.toolbarComposable?.invoke()
-                }
-            )
+                    }
+                )
+            }
         },
     ) {
         SDSomeView(someView = screen.someView)
