@@ -1,4 +1,4 @@
-package com.pv.screendataui
+package com.pv.screendataui.store
 
 import androidx.compose.runtime.Composable
 import com.pv.screendata.views.SomeCustomView

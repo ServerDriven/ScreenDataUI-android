@@ -5,8 +5,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.objects.SomeView
 import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.types.ViewType
-import com.pv.screendataui.SomeStoreHolder
-import com.pv.screendataui.views.*
+import com.pv.screendataui.store.SomeStoreHolder
 
 // Todo : find safe fallback on those labels
 @Composable
