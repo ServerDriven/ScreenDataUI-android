@@ -37,7 +37,7 @@ fun SDImage(image: SomeImage) {
 
     val contentScale = when (image.aspectScale) {
         ImageAspectScale.fit -> ContentScale.Fit
-        ImageAspectScale.fill -> ContentScale.FillBounds
+        ImageAspectScale.fill -> ContentScale.FillHeight
     }
 
     Image(
