@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
-import com.pv.screendata.extensions.SomeStyleHelper.paddingStyle
 import com.pv.screendata.extensions.toSomeView
 import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.views.SomeContainerView
@@ -73,8 +72,7 @@ internal object SDContainerViewDemo {
                 SDLabelMock.mock.toSomeView(),
                 SDLabelMock.mock.toSomeView(),
                 SDLabelMock.mock.toSomeView()
-            ),
-            style = paddingStyle(4)
+            )
         )
     }
 }

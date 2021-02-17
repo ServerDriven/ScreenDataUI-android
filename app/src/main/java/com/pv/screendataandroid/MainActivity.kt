@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.setContent
 import com.pv.screendata.objects.Destination
 import com.pv.screendataui.*
+import com.pv.screendataui.store.SomeStore
 import com.pv.screendataui.store.SomeStoreHolder
 import com.pv.screendataui.store.SomeToolbarStore
 import com.pv.sddestination.SDDestinationHandler
@@ -21,27 +22,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        SomeStoreHolder.store = SDStoreDemo.mockStore
-        SDDestinationStore.desinationHandler = object : SDDestinationHandler {
-
-            override fun handeDestination(destination: Destination?) {
-                Log.d("pv", "desti")
-            }
-        }
-        SomeToolbarStore.toolbarComposable = {
-            val title = remember { mutableStateOf("state") }
-            Text(
-                text = title.value,
-                color = Color.Magenta,
-                modifier = Modifier.clickable(onClick = {
-                    title.value = "Clicked"
-                })
-            )
-        }
-        sdFutureScreenMock.setupStore()
-
         setContent {
-            SDSCreen(screen = Mock.temp)
+            Text(text = "Hi")
         }
     }
 }
