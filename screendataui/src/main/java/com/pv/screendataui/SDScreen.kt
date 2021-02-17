@@ -26,11 +26,8 @@ import com.pv.screendataui.views.SDButtonMock
 import com.pv.screendataui.views.SDImageMock
 import com.pv.screendataui.views.SDSomeView
 
-// would this function only take an id paraeter?
 @Composable
 fun SDSCreen(screen: SomeScreen) {
-
-    // write code for initial from navigator ?
 
     Scaffold(
         Modifier.fillMaxSize(),
@@ -47,6 +44,13 @@ fun SDSCreen(screen: SomeScreen) {
                     backgroundColor = Color.Black,
                     actions = {
                         SomeToolbarStore.toolbarComposable?.invoke()
+                    },
+                    navigationIcon = if (SomeToolbarStore.navigationCheck?.invoke(screen) == true) {
+                        {
+                            SomeToolbarStore.navigationComposable?.invoke()
+                        }
+                    } else {
+                        null
                     }
                 )
             }
