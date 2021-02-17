@@ -10,6 +10,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,13 +35,17 @@ fun SDImage(image: SomeImage) {
         .imageLoader
         .loadImage(imageResource(id = R.drawable.mine_image_sample), image.url)
 
-//    val contentScale = when (image.)
+    val contentScale = when (image.aspectScale) {
+        ImageAspectScale.fit -> ContentScale.Fit
+        ImageAspectScale.fill -> ContentScale.FillBounds
+    }
 
     Image(
         imageSource.value,
         modifier = iModifier.then(Modifier.clickable(onClick = {
             SDDestinationStore.desinationHandler?.handeDestination(image.destination)
-        }))
+        })),
+        contentScale = contentScale
     )
 }
 
