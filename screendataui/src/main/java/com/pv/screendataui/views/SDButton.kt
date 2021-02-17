@@ -14,7 +14,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
-import com.pv.screendata.types.Alignment
 import com.pv.screendata.views.SomeButton
 import com.pv.screendataui.toSafeComposeColor
 import com.pv.sddestination.SDDestinationStore
@@ -77,8 +76,7 @@ internal object SDButtonMock {
                 1f
             ),
             isHidden = false,
-            cornerRadius = 4,
-            alignment = Alignment.center
+            cornerRadius = 4
         )
     )
 }

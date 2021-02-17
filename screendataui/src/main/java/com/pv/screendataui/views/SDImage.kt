@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
+import com.pv.screendata.types.ImageAspectScale
 import com.pv.screendata.views.SomeImage
 import com.pv.screendataui.R
 import com.pv.screendataui.store.SomeImageLoaderStore
@@ -32,6 +33,8 @@ fun SDImage(image: SomeImage) {
     val imageSource = SomeImageLoaderStore
         .imageLoader
         .loadImage(imageResource(id = R.drawable.mine_image_sample), image.url)
+
+//    val contentScale = when (image.)
 
     Image(
         imageSource.value,
@@ -54,6 +57,7 @@ internal object SDImageMock {
         url = "",
         style = null,
         destination = null,
-        idRes = R.drawable.mine_image_sample
+        idRes = R.drawable.mine_image_sample,
+        aspectScale = ImageAspectScale.fill
     )
 }

@@ -11,14 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
-import com.pv.screendata.types.Alignment
 import com.pv.screendata.types.FontType
 import com.pv.screendata.views.SomeLabel
 import com.pv.screendataui.toComposeColor
@@ -108,8 +106,7 @@ internal object SDLabelMock {
                 0.5f, 0.5f, 0.5f, 1f
             ),
             cornerRadius = 8,
-            padding = 12,
-            alignment = Alignment.center
+            padding = 12
         ),
         destination = null,
         font = FontType.title

@@ -11,7 +11,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
-import com.pv.screendata.types.Alignment
 import com.pv.screendata.views.SomeText
 import com.pv.screendataui.toComposeColor
 
@@ -51,8 +50,7 @@ internal fun SDTextPreview() {
                     0.4f, 0f, 1f, 1f
                 ),
                 cornerRadius = 0,
-                padding = 8,
-                alignment = Alignment.center
+                padding = 8
             )
         )
     )

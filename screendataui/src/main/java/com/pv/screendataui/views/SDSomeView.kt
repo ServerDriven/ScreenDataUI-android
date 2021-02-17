@@ -7,7 +7,6 @@ import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.types.ViewType
 import com.pv.screendataui.store.SomeStoreHolder
 
-// Todo : find safe fallback on those labels
 @Composable
 fun SDSomeView(someView: SomeView) = when (someView.type) {
     ViewType.label -> {
@@ -15,9 +14,6 @@ fun SDSomeView(someView: SomeView) = when (someView.type) {
     }
     ViewType.image -> {
         SDImage(image = someView.someImage!!)
-    }
-    ViewType.labeledImage -> {
-        SDLabeledImage(labeledImage = someView.someLabeledImage!!)
     }
     ViewType.container -> {
         SDContainerView(containerView = someView.someContainer!!)
@@ -40,7 +36,7 @@ fun SDSomeView(someView: SomeView) = when (someView.type) {
 
 @Preview(showBackground = true)
 @Composable
-internal fun SDSomeViewPreview() {
+private fun SDSomeViewPreview() {
     SDSomeView(someView = SDSomeViewDemo.mock)
 }
 
@@ -53,7 +49,6 @@ internal object SDSomeViewDemo {
         someButton = null,
         someImage = null,
         someLabel = null,
-        someLabeledImage = null,
         someCustomView = null
     )
 }

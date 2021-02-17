@@ -8,13 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.pv.screendata.extensions.SomeStyleHelper.paddingStyle
 import com.pv.screendata.extensions.toSomeLabel
 import com.pv.screendata.extensions.toSomeView
 import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.screens.SomeScreen
-import com.pv.screendata.types.Alignment
 import com.pv.screendata.types.FontType
 import com.pv.screendata.types.ViewDirectionAxis
 import com.pv.screendata.views.SomeContainerView
@@ -27,7 +25,7 @@ import com.pv.screendataui.views.SDImageMock
 import com.pv.screendataui.views.SDSomeView
 
 @Composable
-fun SDSCreen(screen: SomeScreen) {
+fun SDScreen(screen: SomeScreen) {
 
     Scaffold(
         Modifier.fillMaxSize(),
@@ -62,13 +60,13 @@ fun SDSCreen(screen: SomeScreen) {
 
 @Preview(showBackground = true)
 @Composable
-fun SDScreenPreview() {
+private fun SDScreenPreview() {
     SDScreenDemo.mock()
 }
 
 internal object SDScreenDemo {
     @Composable
-    fun mock() = SDSCreen(
+    fun mock() = SDScreen(
         screen = mockScreen
     )
 
@@ -95,19 +93,15 @@ internal object SDScreenDemo {
                 SDImageMock.mock.toSomeView(),
                 SomeSpacer(size = 8, axis = ViewDirectionAxis.vertical).toSomeView(),
                 "what".toSomeLabel()
-                    .copy(style = paddingStyle(8))
                     .toSomeView(),
                 "yea".toSomeLabel()
-                    .copy(style = paddingStyle(8))
                     .toSomeView(),
                 SomeSpacer(size = 8, axis = ViewDirectionAxis.vertical).toSomeView(),
                 Pair("Something", "Worse")
                     .toSomeLabel()
-                    .copy(style = paddingStyle(8))
                     .toSomeView(),
                 SomeSpacer(size = 8, axis = ViewDirectionAxis.vertical).toSomeView(),
                 "what".toSomeLabel()
-                    .copy(style = paddingStyle(8))
                     .toSomeView(),
                 SomeSpacer(size = 8, axis = ViewDirectionAxis.vertical).toSomeView(),
                 Pair(
@@ -115,7 +109,6 @@ internal object SDScreenDemo {
                         Is this an important piece of informtation or just another bunch of fake news if you read this far then you are a fool lul
                     """.trimIndent()
                 ).toSomeLabel()
-                    .copy(style = paddingStyle(8))
                     .toSomeView(),
                 SomeSpacer(size = 8, axis = ViewDirectionAxis.vertical).toSomeView(),
                 SomeCustomView(
@@ -132,8 +125,7 @@ internal object SDScreenDemo {
                         style = SomeStyle(
                             isHidden = false,
                             cornerRadius = 4,
-                            padding = 8,
-                            alignment = Alignment.center
+                            padding = 8
                         )
                     )
                     .toSomeView()

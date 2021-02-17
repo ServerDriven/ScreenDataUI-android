@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         sdFutureScreenMock.setupStore()
 
         setContent {
-            SDSCreen(screen = Mock.temp)
+            SDScreen(screen = Mock.temp)
         }
     }
 }
