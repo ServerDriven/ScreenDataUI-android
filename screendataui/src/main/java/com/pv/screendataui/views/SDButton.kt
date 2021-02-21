@@ -21,6 +21,8 @@ import com.pv.sddestination.SDDestinationStore
 @Composable
 fun SDButton(someButton: SomeButton) {
 
+    if (someButton.style?.isHidden == true) return
+
     val cbModifier = Modifier.fillMaxWidth().then(
         Modifier.padding(
             start = someButton.style?.padding?.dp ?: 0.dp,

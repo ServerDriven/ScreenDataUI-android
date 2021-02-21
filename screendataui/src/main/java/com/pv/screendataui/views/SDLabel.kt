@@ -25,6 +25,8 @@ import com.pv.sddestination.SDDestinationStore
 @Composable
 fun SDLabel(label: SomeLabel) {
 
+    if (label.style?.isHidden == true) return
+
     val padding = label.style?.padding?.dp ?: 0.dp
 
     val labelModifier = Modifier.fillMaxWidth()

@@ -23,6 +23,8 @@ import com.pv.sddestination.SDDestinationStore
 @Composable
 fun SDImage(image: SomeImage) {
 
+    if (image.style?.isHidden == true) return
+
     val iModifier = Modifier.fillMaxWidth()
         .height(image.style?.height?.dp ?: 40.dp).then(
             Modifier.padding(
@@ -37,7 +39,7 @@ fun SDImage(image: SomeImage) {
 
     val contentScale = when (image.aspectScale) {
         ImageAspectScale.fit -> ContentScale.Fit
-        ImageAspectScale.fill -> ContentScale.FillBounds
+        ImageAspectScale.fill -> ContentScale.FillHeight
     }
 
     Image(
