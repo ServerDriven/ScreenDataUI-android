@@ -17,6 +17,8 @@ import com.pv.screendataui.toComposeColor
 @Composable
 fun SDText(someText: SomeText) {
 
+    if (someText.style?.isHidden == true) return
+
     val padding = someText.style?.padding?.dp ?: 0.dp
 
     val textModifier = Modifier.fillMaxWidth().then(

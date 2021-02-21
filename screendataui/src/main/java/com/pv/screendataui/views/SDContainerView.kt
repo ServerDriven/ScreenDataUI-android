@@ -13,6 +13,9 @@ import com.pv.screendata.views.SomeContainerView
 
 @Composable
 fun SDContainerView(containerView: SomeContainerView) {
+
+    if (containerView.style?.isHidden == true) return
+
     val content = @Composable {
         containerView.views.forEach {
             SDSomeView(someView = it)
