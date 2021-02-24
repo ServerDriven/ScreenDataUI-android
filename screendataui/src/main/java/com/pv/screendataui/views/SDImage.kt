@@ -35,7 +35,7 @@ fun SDImage(image: SomeImage) {
 
     val imageSource = SomeImageLoaderStore
         .imageLoader
-        .loadImage(imageResource(id = R.drawable.mine_image_sample), image.url)
+        .loadImage(image.url)
 
     val contentScale = when (image.aspectScale) {
         ImageAspectScale.fit -> ContentScale.Fit
