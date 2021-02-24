@@ -8,15 +8,10 @@ import kotlinx.coroutines.flow.flowOf
 
 interface SDImageLoader {
 
-    fun loadImage(initial: ImageBitmap, path: String): MutableState<ImageBitmap>
+    fun loadImage(path: String): MutableState<ImageBitmap>
 }
 
 object SomeImageLoaderStore {
 
-    var imageLoader: SDImageLoader = object : SDImageLoader {
-
-        override fun loadImage(initial: ImageBitmap, path: String): MutableState<ImageBitmap> =
-            mutableStateOf(initial)
-
-    }
+    lateinit var imageLoader: SDImageLoader
 }
