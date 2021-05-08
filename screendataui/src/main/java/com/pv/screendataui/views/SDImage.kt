@@ -25,8 +25,10 @@ fun SDImage(image: SomeImage) {
 
     if (image.style?.isHidden == true) return
 
-    val iModifier = Modifier.fillMaxWidth()
-        .height(image.style?.height?.dp ?: 40.dp).then(
+    val iModifier = Modifier
+        .fillMaxWidth()
+        .height(image.style?.height?.dp ?: 40.dp)
+        .then(
             Modifier.padding(
                 start = image.style?.padding?.dp ?: 0.dp,
                 end = image.style?.padding?.dp ?: 0.dp
@@ -44,6 +46,7 @@ fun SDImage(image: SomeImage) {
 
     Image(
         imageSource.value,
+        "",
         modifier = iModifier.then(Modifier.clickable(onClick = {
             SDDestinationStore.desinationHandler?.handeDestination(image.destination)
         })),

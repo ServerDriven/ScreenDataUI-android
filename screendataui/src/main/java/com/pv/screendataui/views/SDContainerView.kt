@@ -1,8 +1,8 @@
 package com.pv.screendataui.views
 
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.ScrollableRow
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -24,19 +24,25 @@ fun SDContainerView(containerView: SomeContainerView) {
 
     val padding = containerView.style?.padding?.dp ?: 0.dp
 
-    val cvModifier = Modifier.fillMaxWidth().then(
-        Modifier.padding(
-            start = padding,
-            end = padding
+    val cvModifier = Modifier
+        .fillMaxWidth()
+        .then(
+            Modifier.padding(
+                start = padding,
+                end = padding
+            )
         )
-    )
 
     val scrollable = containerView.isScrollable
 
     when (containerView.axis) {
         ViewDirectionAxis.horizontal ->
-            if (scrollable) ScrollableRow(
-                modifier = cvModifier,
+            if (scrollable) Row(
+                modifier = cvModifier.then(
+                    Modifier.verticalScroll(
+                        state = ScrollState(0)
+                    )
+                ),
             ) {
                 content()
             } else {
@@ -45,8 +51,8 @@ fun SDContainerView(containerView: SomeContainerView) {
                 }
             }
         ViewDirectionAxis.vertical -> if (scrollable)
-            ScrollableColumn(
-                modifier = cvModifier,
+            Column(
+                modifier = cvModifier.then(Modifier.verticalScroll(ScrollState(0))),
             ) {
                 content()
             } else {
