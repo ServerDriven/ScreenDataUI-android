@@ -2,19 +2,18 @@ package com.pv.screendataui.views
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.material.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.types.FontType
@@ -29,7 +28,8 @@ fun SDLabel(label: SomeLabel) {
 
     val padding = label.style?.padding?.dp ?: 0.dp
 
-    val labelModifier = Modifier.fillMaxWidth()
+    val labelModifier = Modifier
+        .fillMaxWidth()
         .then(
             Modifier.clickable(onClick = {
                 SDDestinationStore.desinationHandler?.handeDestination(label.destination)
@@ -83,6 +83,7 @@ fun SDLabel(label: SomeLabel) {
                 text = it,
                 fontSize = 12.sp,
                 color = textColor
+//                fontFamily = fontFamily(Typeface.DEFAULT_BOLD)
             )
         }
     }
