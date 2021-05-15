@@ -2,6 +2,7 @@ package com.pv.screendataui.views
 
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -40,7 +41,7 @@ fun SDContainerView(containerView: SomeContainerView) {
             if (scrollable) Row(
                 modifier = cvModifier.then(
                     Modifier.verticalScroll(
-                        state = ScrollState(0)
+                        rememberScrollState()
                     )
                 ),
             ) {
@@ -52,7 +53,7 @@ fun SDContainerView(containerView: SomeContainerView) {
             }
         ViewDirectionAxis.vertical -> if (scrollable)
             Column(
-                modifier = cvModifier.then(Modifier.verticalScroll(ScrollState(0))),
+                modifier = cvModifier.then(Modifier.verticalScroll(rememberScrollState())),
             ) {
                 content()
             } else {
@@ -65,7 +66,7 @@ fun SDContainerView(containerView: SomeContainerView) {
 
 @Preview(showBackground = true)
 @Composable
-internal fun SDContainerViewPreview() {
+fun SDContainerViewPreview() {
     SDContainerView(
         containerView = SDContainerViewDemo.containerMock(ViewDirectionAxis.vertical)
     )
@@ -77,6 +78,7 @@ internal object SDContainerViewDemo {
         SomeContainerView(
             id = "someContainerId",
             axis = axis,
+            isScrollable = true,
             views = listOf(
                 SDLabelMock.mock.toSomeView(),
                 SDLabelMock.mock.toSomeView(),
