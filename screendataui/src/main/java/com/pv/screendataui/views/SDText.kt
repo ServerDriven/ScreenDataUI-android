@@ -21,18 +21,20 @@ fun SDText(someText: SomeText) {
 
     val padding = someText.style?.padding?.dp ?: 0.dp
 
-    val textModifier = Modifier.fillMaxWidth().then(
-        Modifier.padding(
-            start = padding,
-            end = padding
+    val textModifier = Modifier
+        .fillMaxWidth()
+        .then(
+            Modifier.padding(
+                start = padding,
+                end = padding
+            )
         )
-    )
 
     Text(
         text = someText.title,
         modifier = textModifier,
         fontSize = 14.sp,
-        color = someText.style?.foregroundColor?.toComposeColor() ?: Color.Unspecified
+        color = someText.style?.foregroundColor?.toComposeColor() ?: Color.White
     )
 }
 
