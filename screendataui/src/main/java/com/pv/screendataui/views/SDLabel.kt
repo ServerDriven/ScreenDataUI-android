@@ -10,6 +10,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.fontResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.Typeface
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -18,6 +22,7 @@ import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.types.FontType
 import com.pv.screendata.views.SomeLabel
+import com.pv.screendataui.store.SomeFontStoreHolder
 import com.pv.screendataui.toComposeColor
 import com.pv.sddestination.SDDestinationStore
 
@@ -50,15 +55,8 @@ fun SDLabel(label: SomeLabel) {
         )
 
     val textColor = label.style?.foregroundColor?.toComposeColor() ?: Color.White
-
-    val size = when (label.font) {
-        FontType.largeTitle -> 24.sp
-        FontType.title -> 20.sp
-        FontType.headline -> 16.sp
-        FontType.body -> 14.sp
-        FontType.footnote -> 12.sp
-        FontType.caption -> 12.sp
-    }
+    val shouldBold = SomeFontStoreHolder.someCustomFontMap[label.font]?.bold ?: false
+    val weight = if (shouldBold) FontWeight.Bold else FontWeight.Normal
 
     val horizontalAlignment =
         if (label.destination != null) androidx.compose.ui.Alignment.CenterHorizontally
@@ -72,9 +70,9 @@ fun SDLabel(label: SomeLabel) {
         label.title.takeIf { it.isNotEmpty() }?.let {
             Text(
                 text = label.title,
-                fontSize = size,
+                fontSize = SomeFontStoreHolder.someCustomFontMap[label.font]!!.size,
                 color = textColor,
-                textAlign = TextAlign.Center
+                fontWeight = weight
             )
         }
 
@@ -83,7 +81,6 @@ fun SDLabel(label: SomeLabel) {
                 text = it,
                 fontSize = 12.sp,
                 color = textColor
-//                fontFamily = fontFamily(Typeface.DEFAULT_BOLD)
             )
         }
     }
