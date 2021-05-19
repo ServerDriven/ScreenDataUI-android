@@ -22,7 +22,7 @@ fun SDText(someText: SomeText) {
     val padding = someText.style?.padding?.dp ?: 0.dp
 
     val textModifier = Modifier
-        .fillMaxWidth()
+//        .fillMaxWidth()
         .then(
             Modifier.padding(
                 start = padding,

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.fontResource
@@ -58,9 +59,7 @@ fun SDLabel(label: SomeLabel) {
     val shouldBold = SomeFontStoreHolder.someCustomFontMap[label.font]?.bold ?: false
     val weight = if (shouldBold) FontWeight.Bold else FontWeight.Normal
 
-    val horizontalAlignment =
-        if (label.destination != null) androidx.compose.ui.Alignment.CenterHorizontally
-        else androidx.compose.ui.Alignment.Start
+    val horizontalAlignment = Alignment.Start
 
     Column(
         modifier = labelModifier,
