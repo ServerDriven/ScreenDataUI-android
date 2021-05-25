@@ -6,12 +6,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.views.SomeText
+import com.pv.screendataui.store.SomeFontStoreHolder
 import com.pv.screendataui.toComposeColor
 
 @Composable
@@ -20,9 +22,11 @@ fun SDText(someText: SomeText) {
     if (someText.style?.isHidden == true) return
 
     val padding = someText.style?.padding?.dp ?: 0.dp
+    val fontFamily = SomeFontStoreHolder.font?.let {
+        FontFamily(it)
+    }
 
     val textModifier = Modifier
-//        .fillMaxWidth()
         .then(
             Modifier.padding(
                 start = padding,
@@ -34,6 +38,7 @@ fun SDText(someText: SomeText) {
         text = someText.title,
         modifier = textModifier,
         fontSize = 14.sp,
+        fontFamily = fontFamily,
         color = someText.style?.foregroundColor?.toComposeColor() ?: Color.White
     )
 }

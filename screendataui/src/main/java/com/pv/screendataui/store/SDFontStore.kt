@@ -1,6 +1,7 @@
 package com.pv.screendataui.store
 
 import androidx.annotation.FontRes
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.unit.TextUnit
 import com.pv.screendata.types.FontType
 import androidx.compose.ui.unit.sp
@@ -20,4 +21,5 @@ object SomeFontStoreHolder {
         FontType.footnote to SomeCustomFont(size = 12.sp),
         FontType.caption to SomeCustomFont(size = 12.sp, bold = true)
     )
+    var font: Font? = null
 }
