@@ -58,6 +58,9 @@ fun SDLabel(label: SomeLabel) {
     val textColor = label.style?.foregroundColor?.toComposeColor() ?: Color.White
     val shouldBold = SomeFontStoreHolder.someCustomFontMap[label.font]?.bold ?: false
     val weight = if (shouldBold) FontWeight.Bold else FontWeight.Normal
+    val fontFamily = SomeFontStoreHolder.font?.let {
+        FontFamily(it)
+    }
 
     val horizontalAlignment = Alignment.Start
 
@@ -71,7 +74,8 @@ fun SDLabel(label: SomeLabel) {
                 text = label.title,
                 fontSize = SomeFontStoreHolder.someCustomFontMap[label.font]!!.size,
                 color = textColor,
-                fontWeight = weight
+                fontWeight = weight,
+                fontFamily = fontFamily
             )
         }
 
@@ -79,7 +83,9 @@ fun SDLabel(label: SomeLabel) {
             Text(
                 text = it,
                 fontSize = 12.sp,
-                color = textColor
+                color = textColor,
+                fontFamily = fontFamily,
+                fontWeight = weight
             )
         }
     }

@@ -30,7 +30,7 @@ fun SDImage(image: SomeImage) {
 
     val iModifier = Modifier
         .fillMaxWidth()
-        .height(image.style?.height?.dp ?: 40.dp)
+        .height(image.style?.height?.dp ?: 300.dp)
         .then(
             Modifier.padding(
                 start = image.style?.padding?.dp ?: 0.dp,
@@ -56,7 +56,6 @@ fun SDImage(image: SomeImage) {
         val imageSource = SomeImageLoaderStore
             .imageLoader
             .loadImage(image.url)
-
 
         Image(
             imageSource.value,
