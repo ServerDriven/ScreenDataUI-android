@@ -84,7 +84,8 @@ fun SDLabel(label: SomeLabel) {
                 text = it,
                 fontSize = 12.sp,
                 color = textColor,
-                fontFamily = fontFamily
+                fontFamily = fontFamily,
+                fontWeight = weight
             )
         }
     }
