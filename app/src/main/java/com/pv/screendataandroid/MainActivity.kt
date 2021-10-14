@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-//            Text(text = "Hi")
             SDScreen(
                 screen = SomeScreen(
                     title = "This is a title",
