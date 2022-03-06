@@ -1,20 +1,22 @@
 package com.pv.screendataandroid
 
 import android.os.Bundle
-import androidx.activity.compose.setContent
+import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.Text
+import androidx.compose.ui.platform.ComposeView
 import com.pv.screendata.extensions.toSomeLabel
 import com.pv.screendata.extensions.toSomeView
 import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.screens.SomeScreen
 import com.pv.screendataui.SDScreen
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        setContent {
+        findViewById<ComposeView>(R.id.main_compose).setContent {
             SDScreen(
                 screen = SomeScreen(
                     title = "This is a title",
