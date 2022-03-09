@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.pv.screendata.objects.SomeColor
 import com.pv.screendata.objects.SomeStyle
 import com.pv.screendata.views.SomeButton
+import com.pv.screendataui.store.SDActionStore
 import com.pv.screendataui.toSafeComposeColor
 import com.pv.sddestination.SDDestinationStore
 
@@ -23,15 +24,18 @@ fun SDButton(someButton: SomeButton) {
 
     if (someButton.style?.isHidden == true) return
 
-    val cbModifier = Modifier.fillMaxWidth().then(
-        Modifier.padding(
-            start = someButton.style?.padding?.dp ?: 0.dp,
-            end = someButton.style?.padding?.dp ?: 0.dp
+    val cbModifier = Modifier
+        .fillMaxWidth()
+        .then(
+            Modifier.padding(
+                start = someButton.style?.padding?.dp ?: 0.dp,
+                end = someButton.style?.padding?.dp ?: 0.dp
+            )
         )
-    )
 
     TextButton(
         onClick = {
+            SDActionStore.actions[someButton.actionID]?.invoke()
             SDDestinationStore.desinationHandler?.handeDestination(someButton.destination)
         },
         cbModifier,
